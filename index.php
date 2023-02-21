@@ -9,15 +9,20 @@
         <h1>Калькулятор роста</h1>
         <section>
             <?php
-            if (!empty($_POST['int'])) {
-                echo 'Ваш рост ' . "$_POST[int]" . ' см !!!!';
-                echo '<p>пересчитать Ваш рост?</p>';
-            } else {
-                echo '<p>введите Ваш рост</p>';
-            }
+                if (array_key_exists('int', $_POST)) {
+                    if (preg_match_all("/[1-2][0-9][0-9]/", $_POST['int'])) {
+                        echo 'Ваш рост ' . "$_POST[int]" . ' см !!!!';
+                        echo '<p>пересчитать Ваш рост?</p>';
+                    } else {
+                        echo '<p>некоретный введен рост в сантиметрах</p>';
+                    }
+                } else {
+
+                    echo '<p>введите Ваш рост в сантиметрах</p>';
+                }
             ?>
             <form action="index.php" name="height" method="POST">
-                <input name="int" type="number">
+                <input name="int" type="text">
                 <button>РАСЧЕТ</button>
             </form>
         </section>
