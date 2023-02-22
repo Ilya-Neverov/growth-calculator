@@ -20,7 +20,7 @@
             }
             ?>
             <form action="index.php" name="height" method="POST">
-                <input name="int" type="text">
+                <input name="int" type="number">
                 <button>РАСЧЕТ</button>
             </form>
         </section>
